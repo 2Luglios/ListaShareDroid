@@ -1,4 +1,4 @@
-package br.com.a2luglios.listasharedroid.dao;
+package br.com.a2luglios.listasharedroid.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -7,7 +7,7 @@ import android.content.SharedPreferences;
  * Created by ettoreluglio on 19/04/17.
  */
 
-public class UsuarioDao {
+public class Usuario {
 
     private SharedPreferences preferences;
 
@@ -15,7 +15,7 @@ public class UsuarioDao {
     private String email;
     private String senha;
 
-    public UsuarioDao(Context ctx) {
+    public Usuario(Context ctx) {
         preferences = ctx.getSharedPreferences("USUARIO", Context.MODE_PRIVATE);
         nome = preferences.getString("nome", "");
         email = preferences.getString("email", "");

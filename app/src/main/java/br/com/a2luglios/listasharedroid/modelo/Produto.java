@@ -9,7 +9,7 @@ public class Produto {
     private Long id;
     private String nome;
     private boolean checado;
-    private String imagem;
+    private byte[] imagem;
     private String marca;
     private String obs;
     private String opcional;
@@ -39,11 +39,11 @@ public class Produto {
         this.checado = checado;
     }
 
-    public String getImagem() {
+    public byte[] getImagem() {
         return imagem;
     }
 
-    public void setImagem(String imagem) {
+    public void setImagem(byte[] imagem) {
         this.imagem = imagem;
     }
 

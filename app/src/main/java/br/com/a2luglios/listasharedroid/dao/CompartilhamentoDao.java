@@ -13,7 +13,8 @@ public class CompartilhamentoDao {
             "id INTEGER PRIMARY KEY," +
             "nome TEXT, " +
             "imagem BLOB, " +
-            "email TEXT);";
+            "email TEXT, " +
+            "idLista INTEGER);";
 
     public static final String UPDATEQUERY = "";
 

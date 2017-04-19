@@ -10,7 +10,7 @@ public class Lista {
 
     private Long id;
     private String nome;
-    private String imagem;
+    private byte[] imagem;
     private List<Produto> produtos;
     private List<Compartilhamento> shared;
 
@@ -30,11 +30,11 @@ public class Lista {
         this.nome = nome;
     }
 
-    public String getImagem() {
+    public byte[] getImagem() {
         return imagem;
     }
 
-    public void setImagem(String imagem) {
+    public void setImagem(byte[] imagem) {
         this.imagem = imagem;
     }
 

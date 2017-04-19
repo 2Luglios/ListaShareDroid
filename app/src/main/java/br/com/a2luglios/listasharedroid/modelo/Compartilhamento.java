@@ -9,7 +9,7 @@ public class Compartilhamento {
     private Long id;
     private String email;
     private String nome;
-    private String imagem;
+    private byte[] imagem;
 
     public Long getId() {
         return id;
@@ -35,11 +35,11 @@ public class Compartilhamento {
         this.nome = nome;
     }
 
-    public String getImagem() {
+    public byte[] getImagem() {
         return imagem;
     }
 
-    public void setImagem(String imagem) {
+    public void setImagem(byte[] imagem) {
         this.imagem = imagem;
     }
 }

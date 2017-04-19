@@ -17,7 +17,8 @@ public class ProdutoDao {
             "marca TEXT, " +
             "opcional TEXT, " +
             "obs TEXT, " +
-            "quantidade INTEGER);";
+            "quantidade INTEGER, " +
+            "idLista INTEGER);";
 
     public static final String UPDATEQUERY = "";
 
