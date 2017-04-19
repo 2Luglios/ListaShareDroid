@@ -14,6 +14,7 @@ public class Produto {
     private String obs;
     private String opcional;
     private int quantidade;
+    private Long idLista;
 
     public Long getId() {
         return id;
@@ -77,5 +78,13 @@ public class Produto {
 
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
+    }
+
+    public Long getIdLista() {
+        return idLista;
+    }
+
+    public void setIdLista(Long idLista) {
+        this.idLista = idLista;
     }
 }

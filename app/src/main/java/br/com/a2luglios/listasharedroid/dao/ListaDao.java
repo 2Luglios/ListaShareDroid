@@ -1,5 +1,6 @@
 package br.com.a2luglios.listasharedroid.dao;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
@@ -29,6 +30,23 @@ public class ListaDao extends BancoUtil {
 
     public ListaDao(Context context) {
         super(context);
+    }
+
+    public void insertOrUpdate(Lista lista) {
+        getWritableDatabase().insert(TABELA, null, listaToContentValues(lista));
+    }
+
+    public void delete (Lista lista) {
+        getWritableDatabase().delete(TABELA, "id=?", new String[]{lista.getId().toString()});
+    }
+
+    private ContentValues listaToContentValues(Lista lista) {
+        ContentValues values = new ContentValues();
+        values.put("id", lista.getId());
+        values.put("nome", lista.getNome());
+        values.put("imagem", lista.getImagem());
+
+        return values;
     }
 
     public List<Lista> getLista() {

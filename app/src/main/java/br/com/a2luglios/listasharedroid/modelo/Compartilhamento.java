@@ -10,6 +10,7 @@ public class Compartilhamento {
     private String email;
     private String nome;
     private byte[] imagem;
+    private Long idLista;
 
     public Long getId() {
         return id;
@@ -41,5 +42,13 @@ public class Compartilhamento {
 
     public void setImagem(byte[] imagem) {
         this.imagem = imagem;
+    }
+
+    public Long getIdLista() {
+        return idLista;
+    }
+
+    public void setIdLista(Long idLista) {
+        this.idLista = idLista;
     }
 }
