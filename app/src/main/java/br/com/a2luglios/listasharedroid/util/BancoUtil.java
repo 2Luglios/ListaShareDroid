@@ -1,4 +1,4 @@
-package br.com.a2luglios.listasharedroid.dao;
+package br.com.a2luglios.listasharedroid.util;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -26,4 +26,5 @@ public class BancoUtil extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
+
 }
