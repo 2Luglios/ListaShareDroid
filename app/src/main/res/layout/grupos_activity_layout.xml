@@ -43,7 +43,6 @@
         android:text="Meus Dados" />
 
     <HorizontalScrollView
-        android:id="@+id/listaCompartilhados"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/btnMeusDados"
@@ -51,8 +50,11 @@
         android:layout_below="@+id/textView10">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:id="@+id/listaGrupoInterna"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical" />
+            android:orientation="horizontal">
+
+        </LinearLayout>
     </HorizontalScrollView>
 </RelativeLayout>
