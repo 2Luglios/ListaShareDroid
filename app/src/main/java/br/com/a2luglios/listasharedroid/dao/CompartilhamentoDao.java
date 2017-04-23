@@ -13,7 +13,7 @@ import br.com.a2luglios.listasharedroid.util.BancoUtil;
 
 public class CompartilhamentoDao extends BancoUtil {
 
-    public static final String TABELA = "PRODUTO";
+    public static final String TABELA = "COMPARTILHAMENTO";
 
     public static final String CREATEQUERY = "CREATE TABLE " + TABELA
             + "(" +

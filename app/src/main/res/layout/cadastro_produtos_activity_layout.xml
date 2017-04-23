@@ -8,7 +8,7 @@
     tools:context="br.com.a2luglios.listasharedroid.CadastroProdutosActivity">
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/imagem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -16,11 +16,11 @@
         app:srcCompat="@mipmap/ic_launcher" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/campoNome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/imageButton"
+        android:layout_below="@+id/imagem"
         android:layout_marginTop="53dp"
         android:ems="10"
         android:inputType="textPersonName"
@@ -31,7 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/editText2"
+        android:layout_below="@+id/campoNome"
         android:text="TextView" />
 
     <LinearLayout
@@ -43,19 +43,19 @@
         android:id="@+id/linearLayout">
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/btnMenosQtd"
             android:layout_width="44dp"
             android:layout_height="wrap_content"
             android:text="-" />
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/btnMaisQtd"
             android:layout_width="38dp"
             android:layout_height="wrap_content"
             android:text="+" />
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/quantidade"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
@@ -64,7 +64,7 @@
     </LinearLayout>
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/campoMarca"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -74,11 +74,11 @@
         android:text="Name" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/campoOpcional"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/editText4"
+        android:layout_below="@+id/campoMarca"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name" />
@@ -88,25 +88,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/editText5"
+        android:layout_below="@+id/campoOpcional"
         android:text="TextView" />
 
     <EditText
-        android:id="@+id/editText6"
+        android:id="@+id/campoObs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/btnSalvar"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/textView9"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
-        android:layout_above="@+id/button6" />
+        android:text="Name" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/btnSalvar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SALVAR"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:id="@+id/btnCancelar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="SALVAR" />
+        android:layout_alignParentStart="true"
+        android:text="Cancelar" />
 </RelativeLayout>
