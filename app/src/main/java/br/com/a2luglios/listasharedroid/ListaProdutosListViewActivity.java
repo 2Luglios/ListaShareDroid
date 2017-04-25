@@ -46,12 +46,12 @@ public class ListaProdutosListViewActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        idLista = getIntent().getLongExtra("idLista", 0);
-
         recarregaLista();
     }
 
     public void recarregaLista() {
+        idLista = getIntent().getLongExtra("idLista", 0);
+
         ProdutoDao dao = new ProdutoDao(this);
         List<Produto> produtos = dao.listaProdutosPorIdLista(idLista);
         dao.close();

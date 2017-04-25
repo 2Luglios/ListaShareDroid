@@ -1,18 +1,15 @@
 package br.com.a2luglios.listasharedroid.modelo;
 
-import java.util.List;
-
 /**
- * Created by ettoreluglio on 19/04/17.
+ * Created by ettoreluglio on 25/04/17.
  */
 
-public class Compartilhamento {
+public class Shared {
 
     private Long id;
     private String email;
     private String nome;
-    private byte[] imagem;
-    private List<Produto> produtos;
+    private Long idLista;
 
     public Long getId() {
         return id;
@@ -38,19 +35,16 @@ public class Compartilhamento {
         this.nome = nome;
     }
 
-    public byte[] getImagem() {
-        return imagem;
+    public Long getIdLista() {
+        return idLista;
     }
 
-    public void setImagem(byte[] imagem) {
-        this.imagem = imagem;
+    public void setIdLista(Long idLista) {
+        this.idLista = idLista;
     }
 
-    public List<Produto> getProdutos() {
-        return produtos;
-    }
-
-    public void setProdutos(List<Produto> produtos) {
-        this.produtos = produtos;
+    @Override
+    public String toString() {
+        return "" + nome;
     }
 }

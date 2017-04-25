@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.util.List;
@@ -45,8 +46,11 @@ public class ListaProdutosAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View v = LayoutInflater.from(ctx).inflate(R.layout.item_lista_produtos_layout, null);
         TextView nome = (TextView) v.findViewById(R.id.nome);
+        CheckBox checado = (CheckBox) v.findViewById(R.id.checado);
 
         nome.setText(produtos.get(position).getNome());
+        checado.setEnabled(produtos.get(position).isChecado());
+
 
         return v;
     }

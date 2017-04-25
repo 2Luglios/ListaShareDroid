@@ -4,14 +4,22 @@ import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.HorizontalScrollView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.List;
+
 import br.com.a2luglios.listasharedroid.adapters.ListaListasAdapter;
+import br.com.a2luglios.listasharedroid.dao.CompartilhamentoDao;
+import br.com.a2luglios.listasharedroid.modelo.Compartilhamento;
+import br.com.a2luglios.listasharedroid.util.BitmapUtil;
 
 public class GruposActivity extends AppCompatActivity {
 
@@ -28,17 +36,39 @@ public class GruposActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        recarregaLista();
+    }
+
+    public void recarregaLista() {
         LinearLayout listaGrupos = (LinearLayout)findViewById(R.id.listaGrupoInterna);
-        TextView tv = new TextView(this);
-        tv.setText("Texto");
-        tv.setLayoutParams(new ActionBar.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
-        TextView tv2 = new TextView(this);
-        tv2.setText("Texto");
-        tv2.setLayoutParams(new ActionBar.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        CompartilhamentoDao dao = new CompartilhamentoDao(this);
+        List<Compartilhamento> lista = dao.lista();
+        dao.close();
 
-        listaGrupos.addView(tv, 0);
-        listaGrupos.addView(tv2, 0);
+        for (Compartilhamento c : lista) {
+            View v = LayoutInflater.from(this).inflate(R.layout.item_grupo_layout, null);
+            v.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.i("GA", "Clicou aqui...");
+                }
+            });
+
+            ImageView imagem = (ImageView) v.findViewById(R.id.imagem);
+            TextView nome = (TextView) v.findViewById(R.id.nome);
+
+            imagem.setImageBitmap(BitmapUtil.getImage(c.getImagem()));
+            nome.setText(c.getNome());
+
+            listaGrupos.addView(v);
+        }
 
     }
 }

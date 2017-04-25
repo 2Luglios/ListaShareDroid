@@ -47,6 +47,7 @@ public class ListaGruposAdapter extends BaseAdapter {
         View v = LayoutInflater.from(ctx).inflate(R.layout.item_grupo_layout, null);
 
         ImageView imagem = (ImageView) v.findViewById(R.id.imagem);
+        imagem.setImageResource(android.R.drawable.btn_dropdown);
         TextView nome = (TextView) v.findViewById(R.id.nome);
 
         nome.setText(compartilhamentos.get(position).getNome());

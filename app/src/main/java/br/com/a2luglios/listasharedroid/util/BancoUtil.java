@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import br.com.a2luglios.listasharedroid.dao.CompartilhamentoDao;
 import br.com.a2luglios.listasharedroid.dao.ListaDao;
 import br.com.a2luglios.listasharedroid.dao.ProdutoDao;
+import br.com.a2luglios.listasharedroid.dao.SharedDao;
 
 /**
  * Created by ettoreluglio on 19/04/17.
@@ -26,6 +27,7 @@ public class BancoUtil extends SQLiteOpenHelper {
         db.execSQL(CompartilhamentoDao.CREATEQUERY);
         db.execSQL(ProdutoDao.CREATEQUERY);
         db.execSQL(ListaDao.CREATEQUERY);
+        db.execSQL(SharedDao.CREATEQUERY);
     }
 
     @Override
@@ -33,6 +35,7 @@ public class BancoUtil extends SQLiteOpenHelper {
         db.execSQL(CompartilhamentoDao.UPDATEQUERY);
         db.execSQL(ProdutoDao.UPDATEQUERY);
         db.execSQL(ListaDao.UPDATEQUERY);
+        db.execSQL(SharedDao.UPDATEQUERY);
     }
 
 }

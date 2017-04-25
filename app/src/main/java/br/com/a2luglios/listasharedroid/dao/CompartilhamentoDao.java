@@ -2,6 +2,10 @@ package br.com.a2luglios.listasharedroid.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.a2luglios.listasharedroid.modelo.Compartilhamento;
 import br.com.a2luglios.listasharedroid.modelo.Produto;
@@ -20,13 +24,14 @@ public class CompartilhamentoDao extends BancoUtil {
             "id INTEGER PRIMARY KEY," +
             "nome TEXT, " +
             "imagem BLOB, " +
-            "email TEXT, " +
-            "idLista INTEGER);";
+            "email TEXT);";
 
     public static final String UPDATEQUERY = "";
+    private Context context;
 
     public CompartilhamentoDao(Context context) {
         super(context);
+        this.context = context;
     }
 
     public void insertOrUpdate(Compartilhamento compartilhamento) {
@@ -43,9 +48,27 @@ public class CompartilhamentoDao extends BancoUtil {
         values.put("nome", compartilhamento.getNome());
         values.put("imagem", compartilhamento.getImagem());
         values.put("email", compartilhamento.getEmail());
-        values.put("idLista", compartilhamento.getIdLista());
 
         return values;
     }
 
+    public List<Compartilhamento> lista() {
+        List<Compartilhamento> lista = new ArrayList<>();
+
+        Cursor c = getWritableDatabase().query(TABELA, null, null, null, null, null, null);
+        while (c.moveToNext()){
+            Compartilhamento compartilhamento = new Compartilhamento();
+            compartilhamento.setId(c.getLong(c.getColumnIndex("id")));
+            compartilhamento.setNome(c.getString(c.getColumnIndex("nome")));
+            compartilhamento.setImagem(c.getBlob(c.getColumnIndex("imagem")));
+            compartilhamento.setEmail(c.getString(c.getColumnIndex("email")));
+
+            List<Produto> produtos = new ProdutoDao(context).listaProdutosPorIdLista(compartilhamento.getId());
+            compartilhamento.setProdutos(produtos);
+
+            lista.add(compartilhamento);
+        }
+
+        return lista;
+    }
 }

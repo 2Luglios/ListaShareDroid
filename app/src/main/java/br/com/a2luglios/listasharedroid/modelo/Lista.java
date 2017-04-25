@@ -12,7 +12,7 @@ public class Lista {
     private String nome;
     private byte[] imagem;
     private List<Produto> produtos;
-    private List<Compartilhamento> shared;
+    private List<Shared> shared;
 
     public Long getId() {
         return id;
@@ -46,11 +46,11 @@ public class Lista {
         this.produtos = produtos;
     }
 
-    public List<Compartilhamento> getShared() {
+    public List<Shared> getShared() {
         return shared;
     }
 
-    public void setShared(List<Compartilhamento> shared) {
+    public void setShared(List<Shared> shared) {
         this.shared = shared;
     }
 }

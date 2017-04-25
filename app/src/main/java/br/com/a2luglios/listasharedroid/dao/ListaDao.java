@@ -10,6 +10,7 @@ import java.util.List;
 import br.com.a2luglios.listasharedroid.modelo.Compartilhamento;
 import br.com.a2luglios.listasharedroid.modelo.Lista;
 import br.com.a2luglios.listasharedroid.modelo.Produto;
+import br.com.a2luglios.listasharedroid.modelo.Shared;
 import br.com.a2luglios.listasharedroid.util.BancoUtil;
 
 /**
@@ -27,9 +28,11 @@ public class ListaDao extends BancoUtil {
             "imagem BLOB);";
 
     public static final String UPDATEQUERY = "";
+    private Context context;
 
     public ListaDao(Context context) {
         super(context);
+        this.context = context;
     }
 
     public void insertOrUpdate(Lista lista) {
@@ -61,37 +64,11 @@ public class ListaDao extends BancoUtil {
             lista.setNome(c.getString(c.getColumnIndex("nome")));
             lista.setImagem(c.getBlob(c.getColumnIndex("imagem")));
 
-            Cursor cursorDeProdutos = getWritableDatabase().query(ProdutoDao.TABELA, null,
-                    "idLista=?", new String[]{lista.getId().toString()}, null, null, null);
-
-            List<Produto> produtos = new ArrayList<>();
-            while(cursorDeProdutos.moveToNext()) {
-                Produto produto = new Produto();
-                produto.setId(cursorDeProdutos.getLong(cursorDeProdutos.getColumnIndex("id")));
-                produto.setImagem(cursorDeProdutos.getBlob(cursorDeProdutos.getColumnIndex("imagem")));
-                produto.setNome(cursorDeProdutos.getString(cursorDeProdutos.getColumnIndex("nome")));
-                produto.setChecado(cursorDeProdutos.getInt(cursorDeProdutos.getColumnIndex("checado")) == 0 ? false : true);
-                produto.setMarca(cursorDeProdutos.getString(cursorDeProdutos.getColumnIndex("marca")));
-                produto.setOpcional(cursorDeProdutos.getString(cursorDeProdutos.getColumnIndex("opcional")));
-                produto.setObs(cursorDeProdutos.getString(cursorDeProdutos.getColumnIndex("obs")));
-                produto.setQuantidade(cursorDeProdutos.getInt(cursorDeProdutos.getColumnIndex("quantidade")));
-                produtos.add(produto);
-            }
+            List<Produto> produtos = new ProdutoDao(context).listaProdutosPorIdLista(lista.getId());
             lista.setProdutos(produtos);
 
-            Cursor cursorDeCompartilhamentos = getWritableDatabase().query(CompartilhamentoDao.TABELA,
-                    null, "idLista=?", new String[]{lista.getId().toString()}, null, null, null);
-
-            List<Compartilhamento> compartilhamentos = new ArrayList<>();
-            while(cursorDeCompartilhamentos.moveToNext()) {
-                Compartilhamento compartilhamento = new Compartilhamento();
-                compartilhamento.setId(cursorDeCompartilhamentos.getLong(cursorDeCompartilhamentos.getColumnIndex("id")));
-                compartilhamento.setNome(cursorDeCompartilhamentos.getString(cursorDeCompartilhamentos.getColumnIndex("nome")));
-                compartilhamento.setEmail(cursorDeCompartilhamentos.getString(cursorDeCompartilhamentos.getColumnIndex("email")));
-                compartilhamento.setImagem(cursorDeCompartilhamentos.getBlob(cursorDeCompartilhamentos.getColumnIndex("imagem")));
-                compartilhamentos.add(compartilhamento);
-            }
-            lista.setShared(compartilhamentos);
+            List<Shared> shareds = new SharedDao(context).listaSharedsPorIdLista(lista.getId());
+            lista.setShared(shareds);
 
             listas.add(lista);
         }
