@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import br.com.a2luglios.listasharedroid.util.DadosSync;
+
 public class SplashActivity extends AppCompatActivity {
 
     @Override
@@ -19,6 +21,8 @@ public class SplashActivity extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+
+                new DadosSync(SplashActivity.this).carregaDados();
 
                 finish();
                 startActivity(new Intent(SplashActivity.this, LoginActivity.class));

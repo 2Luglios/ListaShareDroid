@@ -47,24 +47,26 @@ public class GruposActivity extends AppCompatActivity {
 
     public void recarregaLista() {
         LinearLayout listaGrupos = (LinearLayout)findViewById(R.id.listaGrupoInterna);
-
+        listaGrupos.removeAllViews();
         CompartilhamentoDao dao = new CompartilhamentoDao(this);
         List<Compartilhamento> lista = dao.lista();
         dao.close();
 
-        for (Compartilhamento c : lista) {
+        for (final Compartilhamento c : lista) {
             View v = LayoutInflater.from(this).inflate(R.layout.item_grupo_layout, null);
             v.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.i("GA", "Clicou aqui...");
+                    Intent listaProdutos = new Intent(GruposActivity.this, ListaProdutosListViewActivity.class);
+                    listaProdutos.putExtra("idLista", c.getId());
+                    startActivity(listaProdutos);
                 }
             });
 
             ImageView imagem = (ImageView) v.findViewById(R.id.imagem);
             TextView nome = (TextView) v.findViewById(R.id.nome);
 
-            imagem.setImageBitmap(BitmapUtil.getImage(c.getImagem()));
+//            imagem.setImageBitmap(BitmapUtil.getImage(c.getImagem()));
             nome.setText(c.getNome());
 
             listaGrupos.addView(v);
